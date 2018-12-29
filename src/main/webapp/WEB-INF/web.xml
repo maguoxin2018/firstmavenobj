@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="WebApp_ID"
+         version="3.0">
+    <!--<servlet>-->
+        <!--<servlet-name>ServletDemo</servlet-name>-->
+        <!--&lt;!&ndash;包名加类名&ndash;&gt;-->
+        <!--<servlet-class>com.neuedu.Servlet.selectServlet</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>ServletDemo</servlet-name>-->
+        <!--<url-pattern>/qqqq</url-pattern>-->
+    <!--</servlet-mapping>-->
+    <welcome-file-list><welcome-file>register.jsp</welcome-file>
+    </welcome-file-list>
+    <servlet>
+        <servlet-name>Servletasd</servlet-name>
+        <servlet-class>com.neuedu.Servlet.Servletasd</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Servletasd</servlet-name>
+        <url-pattern>/Servletasd</url-pattern>
+    </servlet-mapping>
+
+</web-app>

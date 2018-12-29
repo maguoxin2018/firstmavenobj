@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- p名称空间注入,走set方法 -->
+    <!--<bean name="user" class="com.neuedu.pojos.Animal" p:name="小胖" p:id="18" p:kind="car" >-->
+
+    <!--</bean>-->
+    <!--bean标签中存在一个scope属性，其中prototype是多例；singleton是单利，单利是默认-->
+    <!--<bean id="Anmimal" class="com.neuedu.pojos.Animal">-->
+        <!--通过调用实体类的set方法设置值-->
+        <!--<property name="id" value="1"></property>-->
+        <!--<property name="name" value="shadiao"></property>-->
+        <!--<property name="kind" value="hashiqi"></property>-->
+        <!--通过调用实体类的构造器设置值-->
+        <!--<constructor-arg value="2" name="id"></constructor-arg>-->
+        <!--<constructor-arg value="dashadiao" name="name"></constructor-arg>-->
+        <!--<constructor-arg value="keji" name="kind"></constructor-arg>-->
+    <!--</bean>-->
+    <!--bean的生命周期 容器开启加载，容器关闭销毁，bean中有两个init-method以及destroy-method两个属性用来电泳自定义的开始、结束的方法-->
+    <!--<bean id="Car" class="com.neuedu.pojos.Car">-->
+        <!--<property name="color" value="白色"></property>-->
+        <!--<property name="brand" value="法拉利"></property>-->
+        <!--<property name="person" ref="perbean"></property>-->
+    <!--</bean>-->
+    <!---->
+    <!--<bean id="perbean" class="com.neuedu.pojos.Person">-->
+        <!--<property name="name" value="zhangsan"></property>-->
+        <!--<property name="sex" value="nan"></property>-->
+        <!--<property name="driveyears" value="5"></property>-->
+    <!--</bean>-->
+
+    <bean id="Carbean" class="com.neuedu.pojos.Carbean">
+        <constructor-arg name="color" value="白色"></constructor-arg>
+        <constructor-arg name="brand" value="法拉利"></constructor-arg>
+        <constructor-arg  name="person">
+            <!--集合的话换成list-->
+            <array>
+                <ref bean="perbean" ></ref>
+                <ref bean="perbean1" ></ref>
+            </array>
+            <!--<map>-->
+                <!--key用来存放基本类型，字符串 key-ref存放引用类型 value同理-->
+                <!--<entry key="" key-ref="" value="" value-ref=""></entry>-->
+            <!--</map>-->
+            <!--<set>-->
+                <!--<bean class="com.neuedu.pojos.Carbean"></bean>-->
+            <!--</set>-->
+        </constructor-arg>
+    </bean>
+    <bean id="perbean" class="com.neuedu.pojos.Person">
+        <property name="name" value="zhangsan"></property>
+        <property name="sex" value="nan"></property>
+        <property name="driveyears" value="5"></property>
+    </bean>
+    <bean id="perbean1" class="com.neuedu.pojos.Person">
+        <property name="name" value="lisi"></property>
+        <property name="sex" value="nan"></property>
+        <property name="driveyears" value="10"></property>
+    </bean>
+</beans>

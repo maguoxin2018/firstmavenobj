@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--加载配置文件-->
+    <properties resource="jdbc.properties"></properties>
+    <typeAliases >
+        <!--//批量命名  name中输包名  别名与实体类一致-->
+        <package name="com.neuedu.pojos"></package>
+        <!--//起别名-->
+        <!--<typeAlias type="com.neuedu.pojos.Boys" alias="boy"></typeAlias>-->
+    </typeAliases>
+
+    <environments default="mysql">
+        <environment id="mysql">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"></property>
+                <property name="url" value="${url}"></property>
+                <property name="username" value="${username}"></property>
+                <property name="password" value="${password}"></property>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--获取映射文件-->
+        <!--<mapper resource="asd.xml" ></mapper>-->
+        <package name="com.neuedu.dao"></package>
+        <!--<mapper class="com.neuedu.dao.asDao"></mapper>-->
+        <!--<mapper class="com.neuedu.dao.OrdersDao"></mapper>-->
+    </mappers>
+</configuration>

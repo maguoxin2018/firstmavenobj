@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.dao.asDao">
+
+    <insert id="insertAndReturnId" parameterType="Boys">
+        <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
+            select last_insert_id() id
+        </selectKey>
+        insert into
+        boys (boyname,usercp)
+        values
+        (#{boyname},#{usercp})
+    </insert>
+
+    <select id="more" parameterType="Boys" resultType="Boys">
+        select * from boys where 1=1
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="boyname != null">
+            and boyname = #{boyname}
+        </if>
+        <if test="usercp != null">
+            and usercp = #{usercp}
+        </if>
+    </select>
+
+</mapper>

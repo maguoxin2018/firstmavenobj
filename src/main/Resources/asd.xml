@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xxxxxx">
+    <select id="selectall" resultType="boy">
+        select id,boyname,usercp from boys
+    </select>
+    <insert id="insert" parameterType="boy">
+        insert into boys values (#{id},#{boyname},#{usercp})
+    </insert>
+    <update id="update">
+        update boys set boyname=#{boyname} where id=#{id}
+    </update>
+    <delete id="delete">
+        delete from boys where id=#{id}
+    </delete>
+    <!--模糊查询-->
+    <select id="asdasd" parameterType="String" resultType="boy">
+        select * from boys where boyname like '%' #{nmae} '%'
+    </select>
+    <!--多条件查询-->
+    <select id="moreselect" parameterType="boy" resultType="boy">
+        select * from boys where 1=1
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="boyname != null">
+            and boyname = #{bounmae}
+        </if>
+        <if test="usercp != null">
+            and usercp = #{usercp}
+        </if>
+    </select>
+</mapper>

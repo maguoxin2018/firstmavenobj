@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.dao.EmplDao" >
+    <!--<select id="selectEmplByemp" resultMap="resultMapper">-->
+        <!--select employee_id,concat(first_name,last_name) as 'name',manager_id-->
+        <!--from employees-->
+        <!--where manager_id = #{employee_id}-->
+    <!--</select>-->
+    <resultMap id="resultMapper" type="Empl">
+        <id property="employee_id" column="employee_id"></id>
+        <result column="name" property="name"></result>
+        <result column="manager_id" property="manager_id"></result>
+        <collection property="empls" ofType="Empl" select="getallempl" column="employee_id"></collection>
+    </resultMap>
+    <select id="getallempl" resultMap="resultMapper" parameterType="int">
+        select employee_id,concat(first_name,last_name) as 'name',manager_id
+        from employees
+        where manager_id = #{employee_id}
+    </select>
+</mapper>

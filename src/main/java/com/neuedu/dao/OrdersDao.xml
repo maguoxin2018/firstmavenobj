@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.dao.OrdersDao">
+    <select id="selectqwe" resultType="User" parameterType="int">
+        select u.username,u.address
+        from user u
+        where u.id = #{user_id}
+    </select>
+
+    <resultMap id="qwe" type="Orders">
+        <id property="id" column="id"></id>
+        <result column="user_id" property="user_id"></result>
+        <result column="number" property="number"></result>
+        <result column="createtime" property="createtime"></result>
+        <result column="note" property="note"></result>
+        <association property="user" javaType="User" select="selectqwe" column="user_id">
+            <!--<result column="username" property="username" ></result>-->
+            <!--<result column="address" property="address" ></result>-->
+        </association>
+    </resultMap>
+
+    <!--sql99语法-->
+    <!--<select id="getmessage" resultMap="qwe" >-->
+        <!--select o.id,o.user_id,o.number,o.createtime,o.note,u.username,u.address-->
+        <!--from orders o-->
+        <!--join user u-->
+        <!--on o.user_id = u.id-->
+    <!--</select>-->
+    <select id="getmessage" parameterType="int" resultMap="qwe">
+        select o.id,o.user_id,o.number,o.createtime,o.note
+        from orders o
+        where id = #{id}
+    </select>
+</mapper>
